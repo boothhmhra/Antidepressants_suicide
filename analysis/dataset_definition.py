@@ -1,6 +1,7 @@
 from ehrql import create_dataset
 from ehrql.tables.tpp import patients, practice_registrations
 
+# this is a function to create a dataset - it should always be called dataset and it defines the patients and variables you want
 dataset = create_dataset()
 
 index_date = "2020-03-31"
@@ -9,8 +10,10 @@ has_registration = practice_registrations.for_patient_on(
     index_date
 ).exists_for_patient()
 
+# this sits within the create dataset function and defines conditions the population must meet
 dataset.define_population(has_registration)
 
+# adds a variable to the dataset
 dataset.sex = patients.sex
 
 ###################################################
