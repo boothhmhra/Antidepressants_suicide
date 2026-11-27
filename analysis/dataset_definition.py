@@ -44,6 +44,7 @@ dataset = create_dataset()
 
 # Death definitions ------------------
 
+# HB I'm not clear where these are being created. Are they variables or are they indicators that aren't in the data?
 # ONS death date recorded
 has_ons_death_date = ons_deaths.date.is_not_null()
 
@@ -77,6 +78,7 @@ has_any_death = (
 # 2) TPP structured death date
 # 3) TPP coded death date
 
+# case takes a sequence of conditions in orders using when and then terminology
 ref_death_date = case(
     when(has_ons_death_date).then(ons_deaths.date),
     when(has_tpp_death_date).then(patients.date_of_death),
